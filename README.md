@@ -9,11 +9,15 @@
   2. GPU
      This folder include a GPU device folder: RTX5000, please use the shell to record the CPU and GPU information. Under RTX5000, there is a HPC folder in which the appropriate fds executable file is linked. The fds example used is a simplified case of that used in the report in the DOC folder (HPC_Report_05_FDS.pdf)
      When you are testing with different GPU, like P5000, just mkdir another folder P5000 and copy the HPC folder to it.
-     To run, just use ". ./run_fds.sh"
+     To run, just use ". ./run_fds.sh" to test the performance of traditional fds with different meshes and openmp threads.
+     There is also a SCALE folder for testing the performance of different mesh cell numbers.
   3. OMP
      This folder includes a CPU machine folder: Xeon**, please use the lscpu.sh to record the cpu information. Under this folder there is HPC folder similar to that under RTX5000/HPC. just run the run_fds.sh to test the performance of the traditional fds. All the fds cases with same number of processes are identical except the CHILD.  HPC_1p_1t.fds means MPI=1, namely one mesh, and Openmp thread = 1.
+     There is also a SCALE folder for testing the performance of different mesh cell numbers.
   4. NOMP
-     This folder includes CPU machine folder: Xeon**, please use the lscpu.sh to record the cpu infomration. Uner this folder there is a HPC folder similar to that under RTX5000/HPC. just run the run_fds.sh to test the performance of the traditional fds.
+     This folder includes CPU machine folder: Xeon**, please use the lscpu.sh to record the cpu infomration. Uner this folder there is a HPC folder similar to that under RTX5000/HPC. just run the run_fds.sh to test the performance of the traditional fds with different meshes.
+     To run, just use ". ./run_fds.sh" to test the performance of traditional fds with different meshes and openmp threads.
+     There is also a SCALE folder for testing the performance of different mesh cell numbers.
   5. DOC
      This folder includes a report about the performance of the traditioanl CPU-based fds similar to that in OMP/HPC
   6. scripts
