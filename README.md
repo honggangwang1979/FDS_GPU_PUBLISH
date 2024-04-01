@@ -19,6 +19,8 @@
 
      3) simple_test*.fds: another series of fds cases shipped with CPU-based FDS
 
+     In all the above 3 groups, "2m" and "4m" means 4-meshes FDS cases, "NR" means "no radiation" cases of FDS.
+
      When you are testing with different GPU, like P5000, just mkdir another folder P5000 and copy the HPC folder to it.
      To run, just use ". ./run_fds.sh" 
 
@@ -39,6 +41,15 @@
 
   1. Prerequirments: Any computer installed NVIDIA GPUs with Compter Capacity >= 60 (we currently do not support other GPUS like AMD GPUs)
      To check the table of gpu vs compute capacity, check this link: https://developer.nvidia.com/cuda-gpus#compute
+
+     if you do not have one, it is easy to grab one online at:
+
+     1) https://console.paperspace.com
+        Paperspace used to have free GPU resources available , but now you may need to upgrade to 8 or 40 dollar/month plan, otherwise it will be hard to hunter one free GPU there: you need to refresh the web page frequently to see if you are lucky.
+
+     2) vast.vi 
+        This company provides very cheap GPU resource. The problem is that you need to download your data after simulation since you may not be able to get the same GPU with your historical data, and they may not save the data for you even if you get the same GPU.
+
   2. git clone https://github.com/honggangwang1979/FDS_GPU_PUBLISH.git
   3. cd ./FDS_GPU_PUBLISH/scripts, run:
           . ./hpc_sdk_install_2401.sh
