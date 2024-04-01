@@ -1,26 +1,27 @@
-ln -sf ../../../bin/fds_gpu_mpi ./fds_mpi
+ln -sf ../../../bin/fds_gpu ./fds
 
 date
-time mpirun --allow-run-as-root -n 1 ./fds ./32a.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./64a.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./128a.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./HPC_32.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./HPC_64.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./HPC_128.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./simple_test_36.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./simple_test_72.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./simple_test_144.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./32a.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./64a.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./128a.fds
+time mpirun --allow-run-as-root -n 1 ./fds ./256a.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./HPC_32.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./HPC_64.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./HPC_128.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./simple_test_36.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./simple_test_72.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./simple_test_144.fds
 
 date
-time mpirun --allow-run-as-root -n 1 ./fds ./32a_NR.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./64a_NR.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./128a_NR.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./HPC_32_NR.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./HPC_64_NR.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./HPC_128_NR.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./simple_test_36_NR.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./simple_test_72_NR.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./simple_test_144_NR.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./32a_NR.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./64a_NR.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./128a_NR.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./HPC_32_NR.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./HPC_64_NR.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./HPC_128_NR.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./simple_test_36_NR.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./simple_test_72_NR.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./simple_test_144_NR.fds
 
 #date
 #time mpirun --allow-run-as-root -n 2 ./fds ./32a_2m.fds
