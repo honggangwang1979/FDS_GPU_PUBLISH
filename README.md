@@ -39,7 +39,10 @@
 
 # How to set up the envirnonment and run the GPU-based FDS
 
-  1. Prerequirments: Any computer installed NVIDIA GPUs with Compter Capacity >= 60 (we currently do not support other GPUS like AMD GPUs)
+  1. Prerequirments: Any computer installed NVIDIA GPUs with Compter Capacity >= 60 (we currently do not support other GPUS like AMD GPUs), and linux version higher than:
+
+             22.04.1-Ubuntu GNU/Linux
+
      To check the table of gpu vs compute capacity, check this link: https://developer.nvidia.com/cuda-gpus#compute
 
      if you do not have one, it is easy to grab one online at:
