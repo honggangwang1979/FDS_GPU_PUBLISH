@@ -74,12 +74,15 @@
 # Note: 
      1. Due to the difference in physical performance of various GPUs, the performance improvement of our GPU-based FDS may vary among these GPUs. the general rule is that the more the domain cells, the higher the performance improvement. The critical cell size is around 64x64x64, below this number the GPU-based FDS has little performance advantage or even slower than the CPU-based FDS. As an example, In NVIDIA P5000, we have achieved 2x faster for 128a.fds, 1.6 x faster for 64a.fds, and slower for 32a.fds. (we got less performance improvment in RTX4000, and A4000)
 
-     2. For Multi-GPU cases, at this stage of the GPU-based FDS, the performance improvment of 2-meshes with 2-processes and 2-GPUs over 1-mesh with 1 process and 1 GPU is about 30~40%, instead of what we are expecting (nealy 100%). The primary reason for this may be that the GPU-based FDS is more efficient when cell size per mesh is larger. (in single mesh scenario the cell size per mesh is  2x larger than that  in a 2-meshes scenario). We are investigating possible ways to enhance the multi-gpu performance.
+     2. For Multi-GPU cases, at this stage of the GPU-based FDS, the performance improvment of 2-meshes with 2-processes and 2-GPUs over 1-mesh with 1 process and 1 GPU is about 30~70%, instead of what we are expecting (nealy 100%). The primary reason for this is that the GPU-based FDS is more efficient when cell size per mesh is larger. (in single mesh scenario the cell size per mesh is  2x larger than that  in a 2-meshes scenario). Based on our tests, if the number of cells per mesh is same, then the GPU speed-up factor is roughly same.  For example, if a single mesh domain is 64x128x128,  which we call 128a_half, then the GPU speed-up factor (GPU-FDS simulation speed/CPU-FDS simulation speed)  is about 1.26, if the domian has two meshes each with range of 64x128x128, which we call 128a_2m, then the GPU speed-up factor is about 1.24. This is an ideal case which is close to the physically achievable scalability. Other case may show significant gaps. 
 
      3. In this beta version of our GPU-based FDS, only the default physical models are GPU-accelerated, which means different FDS cases may come with different performance improvement. Please reach out to me in my LinkedIn page: https://www.linkedin.com/in/honggang-wang-38500285/ for general questions, or my email at honggangwang1979@gmail.com 
 
      4. Till now, we have been able to run the GPU-based FDS in RTX3060, RTX4000, RTX5000, RTX4090, A4000, A5000. It should be able to work in any NVIDIA GPUs with computer compacity >=60.
 
 
+# Summary: about 2 rules (in the ideal cases) of GPU-FDS performance
+   1. GPU-FDS speed-up factors (compared with CPU-FDS) generally  increase with the growing of the cells per mesh
+   2. GPU-FDS speed-up factors tend to be close as long as the number of cells per mesh is same, thefore to a large extent independent of the number of meshes (and the number of MPI processes). This rule indicates that GPU-FDS may always be faster than the CFD-FDS as long as the number of cells per mesh is larger than the critical number which is approcimatly 64x64x64, no matter how many meshes are being used in a FDS case.
   
 
