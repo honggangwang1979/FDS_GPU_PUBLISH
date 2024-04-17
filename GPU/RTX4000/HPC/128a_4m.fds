@@ -10,7 +10,7 @@ REM 3. commit updated openmp_test64...fds and openmp_test128...fds input files
 &MESH ID='MESH_2', IJK=32,128,128, XB=0.5,0.75,0.0,1.0,0.0,1.0 /
 &MESH ID='MESH_3', IJK=32,128,128, XB=0.75,1.0,0.0,1.0,0.0,1.0 /
 
-&TIME T_END=5 /
+&TIME T_END=0.5 /
 
 &DUMP NFRAMES=2,DT_DEVC=0.1 /
 
