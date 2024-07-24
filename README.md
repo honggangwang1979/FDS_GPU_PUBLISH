@@ -1,13 +1,13 @@
 # FDS_GPU_PUBLISH
 
-  This is a beta version of GPU-ported FDS software based on this repository : https://github.com/firemodels/fds at the time of August, 2023
+  This is a beta version of GPU-ported FDS software based on this repository : https://github.com/firemodels/fds at the time of July 16, 2024
 
   Inside this repository, there are several folders:
 
   1. bin
      This folder includes 2 versions of fds executable binary file
 
-     1) fds_gpu: GPU-ported fds. it supports MPI and multi GPUs, but does not get along with openmp. It's best to set the same number of MPI as the number of GPUs existing in a HPC cluster node. When two MPI processes share one GPU, the code may work but the performance may not be good.
+     1) fds_gpu: GPU-ported fds. it supports MPI and multi GPUs, but does not get along with openmp. It's best to set the same number of MPI as the number of GPUs existing in a HPC cluster node. When two MPI processes share one GPU, the code may work but the performance may not be good. By using the MPS in this version, the performance is expected to be 10~30% higher than without using MPS.
 
      2) fds_nomp: CPU-based fds supporting MPI but not openmp. The users can compare the performances of nomp and GPU (Our tests show that  sometimes the MPI+openmp just lowers the performance, so in this distribution we do not include OMP variant of FDS). 
 
@@ -28,7 +28,7 @@
      Please use the lscpu.sh to record the cpu infomration. Under this folder there is a HPC folder similar to that under RTX4000/HPC. just run the run_fds.sh to test the performance of the traditional fds with different meshes.
 
   4. DOC
-     This folder includes a report about the performance of the traditioanl CPU-based fds similar to that in OMP/HPC
+     This folder includes a report about the performance of the traditioanl CPU-based fds similar to that in NOMP/HPC
      It also includes a report about the potential of applications of GPUs in CFD with an over-simplified CFD problem. You can reference this document to have a rough idea about how much benefits you may get from your currently used CPU-based simulation software after porting them to GPUs.
 
   5. scripts
@@ -45,13 +45,13 @@
 
      To check the table of gpu vs compute capacity, check this link: https://developer.nvidia.com/cuda-gpus#compute
 
-     if you do not have one, it is easy to grab one online at:
+     If you do not have one, it is easy to grab one online at:
 
      1) https://console.paperspace.com
         Paperspace used to have free GPU resources available , but now you may need to upgrade to 8 or 40 dollar/month plan, otherwise it will be hard to hunter one free GPU there: you need to refresh the web page frequently to see if you are lucky.
 
      2) vast.vi 
-        This company provides very cheap GPU resource. The problem is that you need to download your data after simulation since you may not be able to get the same GPU with your historical data, and they may not save the data for you even if you get the same GPU.
+        This company provides cheap GPU resource. The problem is that you need to download your data after simulation since you may not be able to get the same GPU with your historical data, and they may not save the data for you even if you get the same GPU.
 
   2. git clone https://github.com/honggangwang1979/FDS_GPU_PUBLISH.git
   3. cd ./FDS_GPU_PUBLISH/scripts, run:
@@ -79,10 +79,15 @@
      3. In this beta version of our GPU-based FDS, only the default physical models are GPU-accelerated, which means different FDS cases may come with different performance improvement. Please reach out to me in my LinkedIn page: https://www.linkedin.com/in/honggang-wang-38500285/ for general questions, or my email at honggangwang1979@gmail.com 
 
      4. Till now, we have been able to run the GPU-based FDS in RTX3060, RTX4000, RTX5000, RTX4090, A4000, A5000. It should be able to work in any NVIDIA GPUs with computer compacity >=60.
+     5. In this updated version, MPS is used by default, which means once installed by using the shell we provide, the MPS is on. You can run "ps -ef | grep nvidia-cuda-mps" to make sure if MPS is on. It yes, you should be able to see something like this:
 
+  	$> ps -ef | grep nvidia-cuda-mps
+	root        1705       1  0 21:00 ?        00:00:00 nvidia-cuda-mps-control -d
+	root        1746    1705  0 21:03 ?        00:00:00 nvidia-cuda-mps-server
+	root        1822    1562  0 21:18 pts/3    00:00:00 grep --color=auto nvidia-cuda-mps
 
 # Summary: about 2 rules (in the ideal cases) of GPU-FDS performance
    1. GPU-FDS speed-up factors (compared with CPU-FDS) generally  increase with the growing of the cells per mesh
-   2. GPU-FDS speed-up factors tend to be close as long as the number of cells per mesh is same, thefore to a large extent independent of the number of meshes (and the number of MPI processes). This rule indicates that GPU-FDS may always be faster than the CFD-FDS as long as the number of cells per mesh is larger than the critical number which is approcimatly 64x64x64, no matter how many meshes are being used in a FDS case.
+   2. GPU-FDS speed-up factors tend to be close as long as the number of cells per mesh is same, thefore to a large extent independent of the number of meshes (and the number of MPI processes). This rule indicates that GPU-FDS may always be faster than the CFD-FDS as long as the number of cells per mesh is larger than the critical number which is approcimatly 64x64x64, no matter how many meshes are being used in a FDS case. However, when multi processes are sharing GPU resource, the speed-up factors may be lower. The use of MPS in this version has improved the performance of sharing GPU resource by 10~30% compared to without using MPS.
   
 
