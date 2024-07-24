@@ -1,5 +1,7 @@
 #cp /notebooks/firemodels/fds/Build/ompi_gnu_linux_db_CUDA/*CUDA ./fds
-cp /notebooks/firemodels/fds/Build/ompi_gnu_linux_CUDA/*CUDA ./fds
+#cp /notebooks/firemodels/fds/Build/ompi_gnu_linux_CUDA/*CUDA ./fds
+
+ln -sf ../../../bin/fds_gpu ./fds
 
 date
 #time mpirun --allow-run-as-root -n 1 ./fds ./32a.fds
