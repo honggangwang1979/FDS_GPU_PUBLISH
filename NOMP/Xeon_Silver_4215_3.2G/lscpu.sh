@@ -1,1 +1,0 @@
-lscpu >CPU.info
