@@ -1,4 +1,4 @@
-cp /notebooks/firemodels/fds/Build/ompi_gnu_linux_nomp/*nomp ./fds
+#cp /notebooks/firemodels/fds/Build/ompi_gnu_linux_nomp/*nomp ./fds
 
 date
 #time mpirun --allow-run-as-root -n 1 ./fds ./32a.fds
@@ -7,9 +7,9 @@ date
 #time mpirun --allow-run-as-root -n 1 ./fds ./64a.fds
 #time mpirun --allow-run-as-root -n 1 ./fds ./128a_quater.fds
 #time mpirun --allow-run-as-root -n 1 ./fds ./128a_half.fds
-#time mpirun --allow-run-as-root -n 1 ./fds ./128a.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./256a_quater.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./256a_half.fds
+time mpirun --allow-run-as-root -n 1 ./fds ./128a.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./256a_quater.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./256a_half.fds
 #time mpirun --allow-run-as-root -n 1 ./fds ./256a.fds
 #time mpirun --allow-run-as-root -n 1 ./fds ./256a.fds
 #time mpirun --allow-run-as-root -n 1 ./fds ./128a_NR.fds

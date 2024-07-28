@@ -1,7 +1,7 @@
 #cp /notebooks/firemodels/fds/Build/ompi_gnu_linux_db_CUDA/*CUDA ./fds
 #cp /notebooks/firemodels/fds/Build/ompi_gnu_linux_CUDA/*CUDA ./fds
 
-ln -sf ../../../bin/fds_gpu ./fds
+#ln -sf ../../../bin/fds_gpu ./fds
 
 date
 #time mpirun --allow-run-as-root -n 1 ./fds ./32a.fds
@@ -10,10 +10,10 @@ date
 #time mpirun --allow-run-as-root -n 1 ./fds ./64a.fds
 #time mpirun --allow-run-as-root -n 1 ./fds ./128a_quater.fds
 #time mpirun --allow-run-as-root -n 1 ./fds ./128a_half.fds
-#time mpirun --allow-run-as-root -n 1 ./fds ./128a.fds
+time mpirun --allow-run-as-root -n 1 ./fds ./128a.fds
 #time mpirun --allow-run-as-root -n 1 ./fds ./256a_quater.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./256a_half.fds
-time mpirun --allow-run-as-root -n 1 ./fds ./256a.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./256a_half.fds
+#time mpirun --allow-run-as-root -n 1 ./fds ./256a.fds
 #time mpirun --allow-run-as-root -n 1 ./fds ./64a.fds
 #time mpirun --allow-run-as-root -n 1 ./fds ./128a.fds
 #time mpirun --allow-run-as-root -n 1 ./fds ./128a_half.fds
@@ -39,6 +39,7 @@ time mpirun --allow-run-as-root -n 1 ./fds ./256a.fds
 #time mpirun --allow-run-as-root -n 2 ./fds ./32a_2m.fds
 #time mpirun --allow-run-as-root -n 2 ./fds ./64a_2m.fds
 #time mpirun --allow-run-as-root -n 2 ./fds ./128a_2m.fds
+#time mpirun --allow-run-as-root -n 2 ./fds ./256a_2m.fds
 #time mpirun --allow-run-as-root -n 2 ./fds ./HPC_32_2m.fds
 #time mpirun --allow-run-as-root -n 2 ./fds ./HPC_64_2m.fds
 #time mpirun --allow-run-as-root -n 2 ./fds ./HPC_128_2m.fds

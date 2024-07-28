@@ -62,7 +62,7 @@
           . ./set_hpc_env_2401.sh
 
   5. cd ../bin, run:
-     tar -xvf fds_GPU_V0.1_Beta.tar.gz
+     tar -xvf fds_GPU_V0.2_Beta_07282024.tar.gz
 
   6. cd ../NOMP/RTX4000/HPC, change the run_fds.sh to include the FDS case you want to run, then run:
          . ./run_fds.sh
@@ -79,12 +79,14 @@
      3. In this beta version of our GPU-based FDS, only the default physical models are GPU-accelerated, which means different FDS cases may come with different performance improvement. Please reach out to me in my LinkedIn page: https://www.linkedin.com/in/honggang-wang-38500285/ for general questions, or my email at honggangwang1979@gmail.com 
 
      4. Till now, we have been able to run the GPU-based FDS in RTX3060, RTX4000, RTX5000, RTX4090, A4000, A5000. It should be able to work in any NVIDIA GPUs with computer compacity >=60.
-     5. In this updated version, MPS is used by default, which means once installed by using the shell we provide, the MPS is on. You can run "ps -ef | grep nvidia-cuda-mps" to make sure if MPS is on. It yes, you should be able to see something like this:
+     5. In this updated version, MPS is used by default, which means once installed by using the shell we provide, the MPS is on. You can run "ps -ef | grep nvidia-cuda-mps" to make sure if MPS is on. If yes, you should be able to see something like this:
 
   	$> ps -ef | grep nvidia-cuda-mps
 	root        1705       1  0 21:00 ?        00:00:00 nvidia-cuda-mps-control -d
 	root        1746    1705  0 21:03 ?        00:00:00 nvidia-cuda-mps-server
 	root        1822    1562  0 21:18 pts/3    00:00:00 grep --color=auto nvidia-cuda-mps
+
+     6. This updated version also refined the radiation kernels and some wall loop kernels, which leads to about 10% faster than the version of fds_GPU_V0.1_Beta.tar.gz for the case of 128a.fds
 
 # Summary: about 2 rules (in the ideal cases) of GPU-FDS performance
    1. GPU-FDS speed-up factors (compared with CPU-FDS) generally  increase with the growing of the cells per mesh
