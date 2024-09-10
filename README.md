@@ -1,4 +1,4 @@
-# FDS_GPU_PUBLISH
+# FDS_GPU_PUBLISH (updated on 09/10/2024)
 
   This is a beta version of GPU-ported FDS software based on this repository : https://github.com/firemodels/fds at the time of July 16, 2024
 
@@ -85,8 +85,12 @@
 	root        1705       1  0 21:00 ?        00:00:00 nvidia-cuda-mps-control -d
 	root        1746    1705  0 21:03 ?        00:00:00 nvidia-cuda-mps-server
 	root        1822    1562  0 21:18 pts/3    00:00:00 grep --color=auto nvidia-cuda-mps
+	
+	Our tests based on a limited number of GPU types (like NVIDIA T4) shows that the performance enhance is low when more than 2 processes are shareing one GPU through MPS.
 
      6. This updated version also refined the radiation kernels and some wall loop kernels, which leads to about 10% faster than the version of fds_GPU_V0.1_Beta.tar.gz for the case of 128a.fds
+
+     7. The running of FDS may requrie a large amount of memory. Based on our test, a FDS case with cell size of 64x64x64 will approximately need 2.5 GB of ROM, and this requirement will increase 10 times with the number of cells doubled in each of the 3 dimension (e.g., for 128x128x128, it will need about 25 GB of ROM)
 
 # Summary: about 2 rules (in the ideal cases) of GPU-FDS performance
    1. GPU-FDS speed-up factors (compared with CPU-FDS) generally  increase with the growing of the cells per mesh
